@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import Navbar from './components/layouts/Navbar';
-import Users from './components/Users/Users';
+
 import User from './components/Users/User';
-import Search from './components/Users/Search';
+import Home from './components/pages/Home';
+import NotFound from './components/pages/NotFound';
 import Alert from './components/layouts/Alert';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
@@ -25,7 +26,7 @@ const App = () => {
   // }, [])
 
   //Set Alert
-  
+
   return (
     <GithubState>
       <AlertState>
@@ -35,14 +36,10 @@ const App = () => {
             <div className="container">
               <Alert />
               <Switch>
-                <Route path="/" exact render={props => (
-                  <Fragment>
-                    <Search/>
-                    <Users />
-                  </Fragment>
-                )} />
+                <Route path="/" exact component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/user/:login" component={User} />
+                <Route component={NotFound} />
               </Switch>
             </div>
           </React.Fragment>
